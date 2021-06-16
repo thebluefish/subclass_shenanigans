@@ -1,6 +1,6 @@
 [package]
-name = "win_subclass_shenanigans"
-version = "0.1.1"
+name = "subclass_shenanigans"
+version = "0.2.0"
 authors = ["s33n <sean.kaufman92@gmail.com>"]
 edition = "2018"
 resolver="2"
