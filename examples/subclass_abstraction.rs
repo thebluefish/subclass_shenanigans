@@ -1,11 +1,13 @@
 use regex::Regex;
 use widestring::U16CStr;
-use win_subclass_shenanigans::prelude::*;
-use win_subclass_shenanigans::winapi::um::{commctrl, dbt, winuser};
-use winit::platform::windows::WindowExtWindows;
+use subclass_shenanigans::{
+    prelude::*,
+    winapi::um::{commctrl, dbt, winuser},
+};
 use winit::{
     event::{Event, WindowEvent},
     event_loop::{ControlFlow, EventLoop},
+    platform::windows::WindowExtWindows,
     window::WindowBuilder,
 };
 
