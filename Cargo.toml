@@ -1,17 +1,19 @@
 [package]
 name = "win_subclass_shenanigans"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["s33n <sean.kaufman92@gmail.com>"]
 edition = "2018"
 resolver="2"
 
 [features]
-device = [] # enables device notification helpers
+default = ["device"]
+# enables device notification helpers
+device = ["winapi/commctrl", "winapi/hidclass", "winapi/portabledevice", "winapi/wlanapi", "winapi/winsmcrd", "winapi/usbiodef"]
 
 [dependencies]
 thiserror = "1.0"
 is_main_thread = "0.1"
-winapi = { version = "0.3", features = ["basetsd", "commctrl", "dbt", "hidclass", "portabledevice", "wlanapi", "winsmcrd", "std", "usbiodef", "winerror", "winuser"] }
+winapi = { version = "0.3", features = ["basetsd", "commctrl", "dbt", "winuser"] }
 
 [dev-dependencies]
 simple_logger = "1"

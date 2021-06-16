@@ -62,10 +62,10 @@ where
                     data as DWORD_PTR,
                 );
 
-                if result == 1 {
-                    Ok(())
-                } else {
+                if result == 0 {
                     Err((SubclassError::InstallFailed, *Box::from_raw(data)))
+                } else {
+                    Ok(())
                 }
             },
             Some(false) => Err((SubclassError::NotMainThread, self)),

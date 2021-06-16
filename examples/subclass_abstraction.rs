@@ -74,14 +74,15 @@ impl Subclass for GcnSubclass {
 fn main() {
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new()
-        .with_title("A fantastic window!")
-        .with_inner_size(winit::dpi::LogicalSize::new(128.0, 128.0))
         .build(&event_loop)
         .unwrap();
 
     let mut subclass = SubclassWrapper::new(window.hwnd() as HWND, 0, GcnSubclass::new());
     subclass.register_device_notification(Some(GUID_DEVINTERFACE_USB_DEVICE));
-    subclass.install().ok();
+
+    if let Err((e, _)) = subclass.install() {
+        println!("failed to install subclass, hotplug unsupported\n{:?}", e);
+    }
 
     event_loop.run(move |event, _, control_flow| {
         *control_flow = ControlFlow::Wait;
